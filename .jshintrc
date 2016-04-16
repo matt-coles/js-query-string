@@ -1,0 +1,10 @@
+{
+    "esnext": true,
+    "browser": true,
+    "node": true,
+    "jasmine": true,
+    "curly": true,
+    "eqeqeq": true,
+    "undef": true,
+    "globals": {}
+}
