@@ -2,21 +2,26 @@
 module.exports = {
 
   _defaults: {
-    "warn_on_invalid": true
+    "warn_on_invalid": false
   },
 
   convert: function (data, options) {
     if (typeof data === 'object') {
-      this._merge_options(this._defaults, options);
+      if (options === undefined) {
+        options = {};
+      }
+      options = this._merge_options(this._defaults, options);
       let result = "?";
       Object.keys(data).map(function (query_key) {
         let query_data = data[query_key];
         let query_data_processed;
-        if (query_data === 'null') {
+        if (query_data === null) {
           if (options.warn_on_invalid) {
             console.warn("Attempted to convert null to query string!");
           }
         } else if (typeof query_data === 'number') {
+          query_data_processed = query_data.toString();
+        } else if (query_data instanceof RegExp) {
           query_data_processed = query_data.toString();
         } else if (typeof query_data === 'string') {
           query_data_processed = query_data;
@@ -33,12 +38,12 @@ module.exports = {
             console.warn("Attempted to convert function or symbol to query string!");
           }
         }
-        if (query_data_processed !== 'undefined') {
+        if (query_data_processed !== undefined) {
           let append = query_key + "=" + encodeURIComponent(query_data_processed) + "&";
           result += append;
         }
       });
-      return result.substring(0, result.length-1);
+      return result === "?" ? "" : result.substring(0, result.length-1);
     } else {
       if (options.warn_on_invalid) {
         console.warn("Attempted to convert non-object to query string!");
