@@ -2,6 +2,7 @@
   "name": "js-query-string",
   "version": "1.0.1",
   "description": "Prepare native JS objects to be used in URL queries",
+  "keywords": ["js", "query", "string", "url", "parameters", "request", "get", "convert"],
   "main": "lib/index.js",
   "scripts": {
     "build": "babel src -d lib && jshint lib/index.js && uglifyjs lib/index.js > lib/index.min.js",
