@@ -1,6 +1,6 @@
 {
   "name": "js-query-string",
-  "version": "1.0.2",
+  "version": "1.0.1",
   "description": "Prepare native JS objects to be used in URL queries",
   "main": "lib/index.js",
   "scripts": {
