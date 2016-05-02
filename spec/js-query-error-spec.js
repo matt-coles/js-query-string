@@ -4,7 +4,9 @@ describe("Object -> Query String W/ Errors", function () {
 
   it("Should fail with functions or Symbols", function () {
     var qs_object = {
-      f: function() { console.log("Hello World!"); },
+      f: function() { /* istanbul ignore next */
+        console.log("Hello World!");
+      },
       s: Symbol("foo")
     };
     expect(querify.convert(qs_object, { warn_on_invalid: true })).toBe("");
