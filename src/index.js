@@ -6,11 +6,11 @@ module.exports = {
   },
 
   convert: function (data, options) {
+    if (options === undefined) {
+      options = {};
+    }
+    options = this._merge_options(this._defaults, options);
     if (typeof data === 'object') {
-      if (options === undefined) {
-        options = {};
-      }
-      options = this._merge_options(this._defaults, options);
       let result = "?";
       Object.keys(data).map(function (query_key) {
         let query_data = data[query_key];
@@ -47,8 +47,8 @@ module.exports = {
     } else {
       if (options.warn_on_invalid) {
         console.warn("Attempted to convert non-object to query string!");
-        return "";
       }
+      return "";
     }
   },
 

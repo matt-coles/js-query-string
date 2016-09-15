@@ -9,7 +9,7 @@ describe("Object -> Query String W/ Errors", function () {
       },
       s: Symbol("foo")
     };
-    expect(querify.convert(qs_object, { warn_on_invalid: true })).toBe("");
+    expect(querify.convert(qs_object)).toBe("");
   });
 
   it("Should fail for nulls", function () {
@@ -17,7 +17,7 @@ describe("Object -> Query String W/ Errors", function () {
       str: "mystr",
       second_str: null
     };
-    expect(querify.convert(qs_object, { warn_on_invalid: true })).toBe("?str=mystr");
+    expect(querify.convert(qs_object)).toBe("?str=mystr");
   });
 
   it("Should fail for undefined", function () {
@@ -25,16 +25,16 @@ describe("Object -> Query String W/ Errors", function () {
       str: "a string",
       second_str: undefined
     };
-    expect(querify.convert(qs_object, { warn_on_invalid: true })).toBe("?str=a%20string");
+    expect(querify.convert(qs_object)).toBe("?str=a%20string");
   });
 
   it("Should fail when trying to use non-objects", function () {
     var qs_object = "str";
     var qs_object2 = 2;
     var qs_object3 = function () { console.log("Hello World!"); };
-    expect(querify.convert(qs_object, { warn_on_invalid: true })).toBe("");
-    expect(querify.convert(qs_object2, { warn_on_invalid: true })).toBe("");
-    expect(querify.convert(qs_object3, { warn_on_invalid: true })).toBe("");
+    expect(querify.convert(qs_object)).toBe("");
+    expect(querify.convert(qs_object2)).toBe("");
+    expect(querify.convert(qs_object3)).toBe("");
   });
 
 });
