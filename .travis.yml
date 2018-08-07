@@ -3,4 +3,4 @@ node_js:
   - "node"
   - "lts/*"
 after_script:
-    - cat /home/travis/build/Alpha-Atom/js-query-string/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf /home/travis/build/Alpha-Atom/js-query-string/coverage/
+    - cat /home/travis/build/matt-coles/js-query-string/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf /home/travis/build/matt-coles/js-query-string/coverage/
